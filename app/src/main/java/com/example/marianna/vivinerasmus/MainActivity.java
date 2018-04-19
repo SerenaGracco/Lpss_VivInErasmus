@@ -8,8 +8,8 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button mLogin;
-    Button mOspite;
+    private Button mLogin;
+    private Button mOspite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,15 +22,19 @@ public class MainActivity extends AppCompatActivity {
         mOspite.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                method(v);
-
-
-            }
-
-            public void method(View view) {
                 Intent intent = new Intent(getBaseContext(), ListaActivity.class);
                 startActivity(intent);
             }
+
+        });
+
+        mLogin.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+
         });
     }
 }
