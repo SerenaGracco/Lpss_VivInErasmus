@@ -5,24 +5,33 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.marianna.vivinerasmus.datamodel.DataStore;
 import com.example.marianna.vivinerasmus.datamodel.Universitas;
-import com.firebase.ui.database.FirebaseListAdapter;
-import com.google.firebase.database.FirebaseDatabase;
 
 
 public class ListaActivity extends AppCompatActivity {
 
     private FloatingActionButton mAccedi;
     private ListView mLista;
-    FirebaseListAdapter adapter;
+    // Costanti
+    private final static String EXTRA_UNIVERSITA = "universita";
+    //private final static String TAG = "VivInErasmus";
 
+    // Widget
+    private ListView listaUniversita;
 
+    // Adapter
+    private UniAdapter adapter;
 
+    // Data Store
+    private DataStore archivio = new DataStore();
 
+     //adapter
     //creazione database realtime(delle università)
-    private FirebaseDatabase unidata=FirebaseDatabase.getInstance();
+   // private FirebaseDatabase unidata=FirebaseDatabase.getInstance();
 
 
 
@@ -31,12 +40,30 @@ public class ListaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
 
-
         mAccedi=(FloatingActionButton)findViewById(R.id.fabAccedi);
-        mLista=(ListView) findViewById(R.id.listView);
+        listaUniversita = (ListView)findViewById(R.id.listaUniversita);
 
+        adapter = new UniAdapter(this);
 
-        FirebaseListOptions <Universitas> options = new FirebaseListOptions
+        archivio.iniziaOsservazioneUniversita(new DataStore.UpdateListener() {
+            @Override
+            public void universitaAggiornate() {
+                adapter.update(archivio.elencoUni());
+            }
+        });
+
+        listaUniversita.setAdapter(adapter);
+        listaUniversita.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Universitas universita = adapter.getItem(position);
+                Intent intent = new Intent(view.getContext(), DettaglioUniActivity.class);
+                intent.putExtra(EXTRA_UNIVERSITA, universita);
+                startActivity(intent);
+            }
+        });
+
+        //FirebaseListOptions <Universitas> options = new FirebaseListOptions
 
 
         mAccedi.setOnClickListener(new View.OnClickListener() {

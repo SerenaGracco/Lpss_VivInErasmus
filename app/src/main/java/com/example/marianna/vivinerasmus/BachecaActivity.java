@@ -1,14 +1,12 @@
 package com.example.marianna.vivinerasmus;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.TabHost;
+import android.support.v7.app.AppCompatActivity;
 
 
 public class BachecaActivity extends AppCompatActivity {
 
+    //private TabHost mHost;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

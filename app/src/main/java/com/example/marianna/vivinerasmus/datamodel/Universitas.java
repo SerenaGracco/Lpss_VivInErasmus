@@ -1,17 +1,18 @@
 package com.example.marianna.vivinerasmus.datamodel;
-
+import java.io.Serializable;
 /**
  * Created by Serena on 24/04/2018.
  */
 
-public class Universitas {
+public class Universitas implements Serializable{
 
     private String Indirizzo;
     private String Nome;
     private String Sito;
     private String Email;
 
-    public Universitas (){
+    public Universitas(){
+
     }
 
     public Universitas (String Indirizzo, String Nome, String Sito, String Email){
@@ -21,7 +22,7 @@ public class Universitas {
         this.Email = Email;
     }
 
-    public String getIndirizzo () {return Indirizzo;}
+    public String getIndirizzo(){return Indirizzo;}
     public void setIndirizzo (String Indirizzo) {this.Indirizzo = Indirizzo;}
 
     public String getNome () {return Nome;}

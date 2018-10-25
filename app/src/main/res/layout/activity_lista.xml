@@ -34,12 +34,12 @@
         app:srcCompat="@mipmap/immaginetrasparente" />
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/listaUniversita"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="-13dp"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
