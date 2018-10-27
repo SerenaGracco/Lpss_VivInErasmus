@@ -16,11 +16,7 @@ import java.util.List;
 public class DataStore {
     // Costanti
     private final static String TAG = "DataStore";
-    private final static String DB_UNIVERSITA = "universita";
-    private final static String KEY_INDIRIZZO = "indirizzo";
-    private final static String KEY_NOME = "nome";
-    private final static String KEY_SITO = "sito";
-    private final static String KEY_EMAIL = "email";
+    private final static String DB_UNIVERSITA = "Università";
 
     private ValueEventListener listenerUni;
 
@@ -34,6 +30,8 @@ public class DataStore {
      */
     public DataStore() {
         leuniversita = new ArrayList<>();
+        //Universitas prova = new Universitas("Via Roma, 29", "Uniiiii", "wwww", "OOOO");
+        //leuniversita.add(prova);
     }
 
     public interface UpdateListener {
@@ -43,6 +41,7 @@ public class DataStore {
     public void iniziaOsservazioneUniversita(final UpdateListener notifica) {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
+        database.setPersistenceEnabled(true);
         DatabaseReference ref = database.getReference(DB_UNIVERSITA);
 
         listenerUni = new ValueEventListener() {
@@ -51,11 +50,7 @@ public class DataStore {
                leuniversita.clear();
                 for (DataSnapshot elemento:dataSnapshot.getChildren()) {
                     Universitas uni = new Universitas();
-                    uni.setNome(elemento.getKey());
-                    uni.setIndirizzo(elemento.child(KEY_INDIRIZZO).getValue(String.class));
-                    uni.setNome(elemento.child(KEY_NOME).getValue(String.class));
-                    uni.setSito(elemento.child(KEY_SITO).getValue(String.class));
-                    uni.setEmail(elemento.child(KEY_EMAIL).getValue(String.class));
+                    uni = elemento.getValue(Universitas.class);
                     leuniversita.add(uni);
                 }
                 notifica.universitaAggiornate();

@@ -29,11 +29,6 @@ public class ListaActivity extends AppCompatActivity {
     // Data Store
     private DataStore archivio = new DataStore();
 
-     //adapter
-    //creazione database realtime(delle università)
-   // private FirebaseDatabase unidata=FirebaseDatabase.getInstance();
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +39,7 @@ public class ListaActivity extends AppCompatActivity {
         listaUniversita = (ListView)findViewById(R.id.listaUniversita);
 
         adapter = new UniAdapter(this);
-
+        //adapter.update(archivio.elencoUni());
         archivio.iniziaOsservazioneUniversita(new DataStore.UpdateListener() {
             @Override
             public void universitaAggiornate() {

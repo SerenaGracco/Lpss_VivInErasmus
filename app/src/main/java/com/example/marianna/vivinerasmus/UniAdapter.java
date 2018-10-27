@@ -68,6 +68,8 @@ public class UniAdapter extends BaseAdapter{
         textIndirizzo.setText(universitas.getIndirizzo());
         // TODO: 10/10/2018 immagine e ranking???
 
+        //su firebase immagine: url comune/nomeimmagine.jpg
+
         return convertView;
     }
 }
