@@ -2,98 +2,122 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="131dp" />
+        app:layout_constraintGuide_begin="130dp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textNome"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textIndirizzo"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
-        android:layout_height="17dp"
-        android:text="TextView"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline"
-        app:layout_constraintBottom_toBottomOf="@+id/textNome"
-        android:layout_marginBottom="0dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="TextView"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline"
         app:layout_constraintBottom_toBottomOf="@+id/textSito"
-        android:layout_marginBottom="0dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginLeft="0dp"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
-        app:layout_constraintBottom_toBottomOf="@+id/textEmail"
-        android:layout_marginBottom="0dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="TextView"
-        android:layout_marginLeft="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textEmail"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
-        app:layout_constraintBottom_toBottomOf="@+id/textIndirizzo"
-        android:layout_marginBottom="-8dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
 
     <TextView
         android:id="@+id/textNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nome"
-        app:layout_constraintRight_toLeftOf="@+id/guideline"
-        android:layout_marginRight="8dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="25dp"
-        app:layout_constraintHorizontal_bias="0.285" />
+        android:layout_marginRight="8dp"
+        android:text="Nome"
+        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textSito"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sito"
-        android:layout_marginTop="9dp"
-        app:layout_constraintTop_toBottomOf="@+id/textIndirizzo"
         android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/textIndirizzo" />
+        android:layout_marginTop="9dp"
+        android:text="Sito"
+        app:layout_constraintLeft_toLeftOf="@+id/textIndirizzo"
+        app:layout_constraintTop_toBottomOf="@+id/textIndirizzo" />
 
     <TextView
         android:id="@+id/textIndirizzo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Indirizzo"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/textNome"
         android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/textNome" />
+        android:layout_marginTop="8dp"
+        android:text="Indirizzo"
+        app:layout_constraintLeft_toLeftOf="@+id/textNome"
+        app:layout_constraintTop_toBottomOf="@+id/textNome" />
 
     <TextView
         android:id="@+id/textEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email"
-        android:layout_marginTop="11dp"
-        app:layout_constraintTop_toBottomOf="@+id/textSito"
         android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/textSito" />
+        android:layout_marginTop="11dp"
+        android:text="Email"
+        app:layout_constraintLeft_toLeftOf="@+id/textSito"
+        app:layout_constraintTop_toBottomOf="@+id/textSito" />
+
+    <Button
+        android:id="@+id/btnVai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="70dp"
+        android:text="VAI!"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textEmail" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="54dp" />
 
 </android.support.constraint.ConstraintLayout>

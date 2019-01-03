@@ -22,7 +22,6 @@ public class DataStore {
 
 
     // Lista locale degli studenti
-    // Todo: da eliminare
     private ArrayList<Universitas> leuniversita;
 
     /**

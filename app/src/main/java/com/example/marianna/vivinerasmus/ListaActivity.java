@@ -48,10 +48,12 @@ public class ListaActivity extends AppCompatActivity {
         });
 
         listaUniversita.setAdapter(adapter);
+
         listaUniversita.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Universitas universita = adapter.getItem(position);
+                //TODO: if logineffettuato intent intent=new intent(,BachecaActivity.class) else
                 Intent intent = new Intent(view.getContext(), DettaglioUniActivity.class);
                 intent.putExtra(EXTRA_UNIVERSITA, universita);
                 startActivity(intent);
