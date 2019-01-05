@@ -51,15 +51,18 @@ public class RegistratiActivity extends AppCompatActivity {
                     mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful())
+                            {
                             String user_id = mAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = mDatabase.child(user_id);
                             current_user_db.child("Username").setValue(username);
-                            //current_user_db.child("Email").setValue(email);
+                            current_user_db.child("Email").setValue(email);
                             //current_user_db.child(“Image”).setValue(“Default”);
                             Toast.makeText(RegistratiActivity.this, "Registrazione avvenuta con successo", Toast.LENGTH_LONG).show();
                          /*   Intent regIntent = new Intent(RegistratiActivity.this, ProfileActivity.class);
                             regIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(regIntent); */
+                            startActivity(regIntent); */}
+                           //TODO: //else{}
                         } });
                 }else {
                     Toast.makeText(RegistratiActivity.this, "Completa tutti i campi.", Toast.LENGTH_SHORT).show();

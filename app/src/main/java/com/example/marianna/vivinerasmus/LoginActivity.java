@@ -27,49 +27,63 @@ public class LoginActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private Button mLogin;
     private TextView mSignUp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        mLogin = (Button)findViewById(R.id.btnLogin);
-        mEmail = (EditText)findViewById(R.id.textEmail);
-        mPassword = (EditText)findViewById(R.id.textPassword);
+        mLogin = (Button) findViewById(R.id.btnLogin);
+        mEmail = (EditText) findViewById(R.id.textEmail);
+        mPassword = (EditText) findViewById(R.id.textPassword);
         mAuth = FirebaseAuth.getInstance();
-        mSignUp=(TextView)findViewById(R.id.textSignUp);
+        mSignUp = (TextView) findViewById(R.id.textSignUp);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
-        mSignUp.setOnClickListener(new View.OnClickListener(){
+
+        mSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this, RegistratiActivity.class));
-            } });
+            }
+        });
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(LoginActivity.this, "PROCESSING….", Toast.LENGTH_LONG).show();
                 String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
-                if (!TextUtils.isEmpty(email)&& !TextUtils.isEmpty(password)){
-                    mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+                    mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
+                            if (task.isSuccessful()) {
                                 checkUserExistence();
-                            }else {
+                            } else {
                                 Toast.makeText(LoginActivity.this, "Login fallito: username inesistente", Toast.LENGTH_SHORT).show();
-                            } } });
-                }else {
+                            }
+                        }
+                    });
+                } else {
                     Toast.makeText(LoginActivity.this, "Completa tutti i campi", Toast.LENGTH_SHORT).show();
-                } } }); }
-    public void checkUserExistence(){
+                }
+            }
+        });
+    }
+
+    public void checkUserExistence() {
         final String user_id = mAuth.getCurrentUser().getUid();
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.hasChild(user_id)){
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                }else {
+                if (dataSnapshot.hasChild(user_id)) {
+                    startActivity(new Intent(LoginActivity.this, BachecaActivity.class));
+                } else {
                     Toast.makeText(LoginActivity.this, "User non registrato", Toast.LENGTH_SHORT).show();
-                } }
+                }
+            }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
-            } }); }}
+            }
+        });
+    }
+}

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.example.marianna.vivinerasmus.datamodel.DataStore;
 import com.example.marianna.vivinerasmus.datamodel.Universitas;
@@ -14,14 +15,15 @@ import com.example.marianna.vivinerasmus.datamodel.Universitas;
 
 public class ListaActivity extends AppCompatActivity {
 
-    private FloatingActionButton mAccedi;
-    private ListView mLista;
+
     // Costanti
     private final static String EXTRA_UNIVERSITA = "universita";
     //private final static String TAG = "VivInErasmus";
 
     // Widget
-    private ListView listaUniversita;
+    private ListView mLista;
+    private FloatingActionButton mAccedi;
+    private SearchView mCerca;
 
     // Adapter
     private UniAdapter adapter;
@@ -36,10 +38,10 @@ public class ListaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista);
 
         mAccedi=(FloatingActionButton)findViewById(R.id.fabAccedi);
-        listaUniversita = (ListView)findViewById(R.id.listaUniversita);
+        mLista = (ListView)findViewById(R.id.listaUniversita);
+        mCerca=(SearchView)findViewById(R.id.searchView);
 
         adapter = new UniAdapter(this);
-        //adapter.update(archivio.elencoUni());
         archivio.iniziaOsservazioneUniversita(new DataStore.UpdateListener() {
             @Override
             public void universitaAggiornate() {
@@ -47,9 +49,9 @@ public class ListaActivity extends AppCompatActivity {
             }
         });
 
-        listaUniversita.setAdapter(adapter);
+        mLista.setAdapter(adapter);
 
-        listaUniversita.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Universitas universita = adapter.getItem(position);
@@ -60,9 +62,8 @@ public class ListaActivity extends AppCompatActivity {
             }
         });
 
-        //FirebaseListOptions <Universitas> options = new FirebaseListOptions
 
-
+//TODO: se loggato non c'è?
         mAccedi.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {

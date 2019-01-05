@@ -18,7 +18,7 @@ import java.util.List;
 
 public class UniAdapter extends BaseAdapter{
 
-    private List<Universitas> universita = Collections.emptyList();
+    private List<Universitas> listaUniversita = Collections.emptyList();
     private Context context;
 
     /**
@@ -30,18 +30,18 @@ public class UniAdapter extends BaseAdapter{
     }
 
     public void update(List<Universitas> newList) {
-        universita = newList;
+        listaUniversita = newList;
         notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return universita.size();
+        return listaUniversita.size();
     }
 
     @Override
     public Universitas getItem(int position) {
-        return universita.get(position);
+        return listaUniversita.get(position);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class UniAdapter extends BaseAdapter{
 
 
         // Imposto i valori da visualizzare
-        Universitas universitas = universita.get(position);
+        Universitas universitas = listaUniversita.get(position);
         textNome.setText(universitas.getNome());
         textIndirizzo.setText(universitas.getIndirizzo());
         // TODO: 10/10/2018 immagine e ranking???

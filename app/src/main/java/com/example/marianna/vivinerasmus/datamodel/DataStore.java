@@ -24,13 +24,9 @@ public class DataStore {
     // Lista locale degli studenti
     private ArrayList<Universitas> leuniversita;
 
-    /**
-     * Costruttore
-     */
+
     public DataStore() {
         leuniversita = new ArrayList<>();
-        //Universitas prova = new Universitas("Via Roma, 29", "Uniiiii", "wwww", "OOOO");
-        //leuniversita.add(prova);
     }
 
     public interface UpdateListener {
@@ -41,7 +37,7 @@ public class DataStore {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         database.setPersistenceEnabled(true);
-        DatabaseReference ref = database.getReference(DB_UNIVERSITA);
+        DatabaseReference ref = database.getReference();
 
         listenerUni = new ValueEventListener() {
             @Override
@@ -58,10 +54,11 @@ public class DataStore {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+
             }
         };
 
-        ref.addValueEventListener(listenerUni);
+        ref.child(DB_UNIVERSITA).addValueEventListener(listenerUni);
     }
 
     public void terminaOsservazioneUniversita() {
@@ -71,7 +68,6 @@ public class DataStore {
 
     /**
      * Ottiene l'elenco di tutti le uni
-     * Todo: Attenzione il metodo è potenzialmente pericoloso. Potrebbe restituire troppi dati!
      * @return Lista di università
      */
 
@@ -91,7 +87,6 @@ public class DataStore {
 
 
     /**
-     * Restituisce il numero di università presenti nel database
      * @return numero di università
      */
     public int numeroUniversita() {
