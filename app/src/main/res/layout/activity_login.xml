@@ -12,7 +12,7 @@
 
         <EditText
             android:layout_margin="8dp"
-            android:id="@+id/textUsername"
+            android:id="@+id/editEmail"
             android:padding="16dp"
             android:inputType="textEmailAddress"
             android:textColor="#000"
@@ -23,7 +23,7 @@
         <EditText
             android:padding="16dp"
             android:layout_margin="8dp"
-            android:id="@+id/textPassword"
+            android:id="@+id/editPassword"
             android:textColor="#000"
             android:inputType="textPassword"
             android:layout_width="match_parent"

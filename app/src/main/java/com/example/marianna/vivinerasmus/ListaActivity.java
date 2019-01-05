@@ -11,6 +11,8 @@ import android.widget.SearchView;
 
 import com.example.marianna.vivinerasmus.datamodel.DataStore;
 import com.example.marianna.vivinerasmus.datamodel.Universitas;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class ListaActivity extends AppCompatActivity {
@@ -22,7 +24,7 @@ public class ListaActivity extends AppCompatActivity {
 
     // Widget
     private ListView mLista;
-    private FloatingActionButton mAccedi;
+    private FloatingActionButton mOmino;
     private SearchView mCerca;
 
     // Adapter
@@ -31,16 +33,20 @@ public class ListaActivity extends AppCompatActivity {
     // Data Store
     private DataStore archivio = new DataStore();
 
+    private FirebaseAuth mAuth;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
 
-        mAccedi=(FloatingActionButton)findViewById(R.id.fabAccedi);
+        mOmino=(FloatingActionButton)findViewById(R.id.fabOmino);
         mLista = (ListView)findViewById(R.id.listaUniversita);
         mCerca=(SearchView)findViewById(R.id.searchView);
 
+        mAuth= FirebaseAuth.getInstance();
+        //TODO: searchview
         adapter = new UniAdapter(this);
         archivio.iniziaOsservazioneUniversita(new DataStore.UpdateListener() {
             @Override
@@ -55,7 +61,6 @@ public class ListaActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Universitas universita = adapter.getItem(position);
-                //TODO: if logineffettuato intent intent=new intent(,BachecaActivity.class) else
                 Intent intent = new Intent(view.getContext(), DettaglioUniActivity.class);
                 intent.putExtra(EXTRA_UNIVERSITA, universita);
                 startActivity(intent);
@@ -63,12 +68,18 @@ public class ListaActivity extends AppCompatActivity {
         });
 
 
-//TODO: se loggato non c'è?
-        mAccedi.setOnClickListener(new View.OnClickListener() {
+
+        mOmino.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), LoginActivity.class);
-                startActivity(intent);
+                FirebaseUser currentUser = mAuth.getCurrentUser();
+                if (currentUser == null) {
+                    Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent2=new Intent(getBaseContext(), ProfiloActivity.class);
+                    startActivity(intent2);
+                }
             }
 
         });

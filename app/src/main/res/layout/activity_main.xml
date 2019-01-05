@@ -40,6 +40,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.924" />
 
+    <Button
+        android:id="@+id/btnEntra"
+        android:layout_width="105dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="150dp"
+        android:layout_marginBottom="8dp"
+        android:text="ENTRA!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.925" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="411dp"

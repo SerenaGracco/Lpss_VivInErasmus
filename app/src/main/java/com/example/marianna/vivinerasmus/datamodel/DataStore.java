@@ -13,13 +13,12 @@ import java.util.List;
  * Created by Marianna on 10/10/2018.
  */
 
-public class DataStore {
+public class DataStore  {
     // Costanti
     private final static String TAG = "DataStore";
     private final static String DB_UNIVERSITA = "Università";
 
     private ValueEventListener listenerUni;
-
 
     // Lista locale degli studenti
     private ArrayList<Universitas> leuniversita;
@@ -36,6 +35,7 @@ public class DataStore {
     public void iniziaOsservazioneUniversita(final UpdateListener notifica) {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
+        //databaseException: Calls to setPersistenceEnabled() must be made before any other usage of FirebaseDatabase instance.
         database.setPersistenceEnabled(true);
         DatabaseReference ref = database.getReference();
 
@@ -70,7 +70,6 @@ public class DataStore {
      * Ottiene l'elenco di tutti le uni
      * @return Lista di università
      */
-
     public List<Universitas> elencoUni() {
         return leuniversita;
     }
@@ -83,8 +82,6 @@ public class DataStore {
         else
             return leuniversita.get(posizione);
     }
-
-
 
     /**
      * @return numero di università
