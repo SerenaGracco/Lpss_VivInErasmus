@@ -1,4 +1,4 @@
-package com.example.marianna.vivinerasmus;
+package com.example.marianna.vivinerasmus.daeliminare;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.marianna.vivinerasmus.MainActivity;
+import com.example.marianna.vivinerasmus.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

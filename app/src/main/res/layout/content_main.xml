@@ -7,7 +7,7 @@
     android:layout_margin="10dp"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.marianna.vivinerasmus.BachecaActivity"
+    tools:context="com.example.marianna.vivinerasmus.daeliminare.BachecaActivity"
     tools:showIn="@layout/activity_bacheca">
 
 

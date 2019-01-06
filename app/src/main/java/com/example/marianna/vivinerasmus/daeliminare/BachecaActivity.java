@@ -1,4 +1,4 @@
-package com.example.marianna.vivinerasmus;
+package com.example.marianna.vivinerasmus.daeliminare;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.marianna.vivinerasmus.datamodel.Post;
+import com.example.marianna.vivinerasmus.R;
+import com.example.marianna.vivinerasmus.RegistratiActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -161,7 +162,7 @@ public class BachecaActivity extends AppCompatActivity {
 @Override
         public boolean onCreateOptionsMenu(Menu menu) {
             // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.menu_main, menu);
+            getMenuInflater().inflate(R.menu.menu_lista, menu);
             return true;
         }
 
@@ -183,5 +184,5 @@ public class BachecaActivity extends AppCompatActivity {
     }
 }
 
-
+*/
 

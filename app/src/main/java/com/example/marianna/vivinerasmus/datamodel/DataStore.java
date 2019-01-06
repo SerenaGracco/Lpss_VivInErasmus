@@ -36,8 +36,10 @@ public class DataStore  {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         //databaseException: Calls to setPersistenceEnabled() must be made before any other usage of FirebaseDatabase instance.
-        database.setPersistenceEnabled(true);
-        DatabaseReference ref = database.getReference();
+        //ogni seconda volta che vado a listaactivity (sia che nel frattempo mi sia loggato o meno) quindi ho creato una nuova classe che fa
+        //extends su application che contiene solo questo metodo:
+       // database.setPersistenceEnabled(true);
+        DatabaseReference ref = database.getReference(DB_UNIVERSITA);
 
         listenerUni = new ValueEventListener() {
             @Override
@@ -58,7 +60,7 @@ public class DataStore  {
             }
         };
 
-        ref.child(DB_UNIVERSITA).addValueEventListener(listenerUni);
+        ref.addValueEventListener(listenerUni);
     }
 
     public void terminaOsservazioneUniversita() {

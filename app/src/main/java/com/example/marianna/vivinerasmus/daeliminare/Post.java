@@ -1,4 +1,4 @@
-package com.example.marianna.vivinerasmus.datamodel;
+package com.example.marianna.vivinerasmus.daeliminare;
 
 public class Post {
     private String title, desc, imageUrl, username;

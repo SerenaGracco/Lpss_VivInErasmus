@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.marianna.vivinerasmus.daeliminare.BachecaActivity;
 import com.example.marianna.vivinerasmus.datamodel.Universitas;
 
 /**
@@ -47,7 +48,6 @@ public class DettaglioUniActivity extends AppCompatActivity {
             mSito.setText(universita.getSito());
             mNome.setText(universita.getNome());
             mEmail.setText(universita.getEmail());
-            //TODO: anche immagine
 
             mVai.setOnClickListener(new View.OnClickListener() {
 

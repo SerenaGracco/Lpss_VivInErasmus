@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -13,6 +15,7 @@ import com.example.marianna.vivinerasmus.datamodel.DataStore;
 import com.example.marianna.vivinerasmus.datamodel.Universitas;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class ListaActivity extends AppCompatActivity {
@@ -34,6 +37,7 @@ public class ListaActivity extends AppCompatActivity {
     private DataStore archivio = new DataStore();
 
     private FirebaseAuth mAuth;
+    private FirebaseDatabase database;
 
 
     @Override
@@ -48,6 +52,7 @@ public class ListaActivity extends AppCompatActivity {
         mAuth= FirebaseAuth.getInstance();
         //TODO: searchview
         adapter = new UniAdapter(this);
+
         archivio.iniziaOsservazioneUniversita(new DataStore.UpdateListener() {
             @Override
             public void universitaAggiornate() {
@@ -85,5 +90,33 @@ public class ListaActivity extends AppCompatActivity {
         });
 
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_lista, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+      /*  if (id == R.id.action_settings) {
+            return true;
+        }*/
+         if (id == R.id.action_add) {
+            startActivity(new Intent(ListaActivity.this, AggiungiUniActivity.class));
+        } else if (id == R.id.logout){
+            mAuth.signOut();
+            Intent logoutIntent = new Intent(ListaActivity.this, MainActivity.class);
+            logoutIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(logoutIntent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        archivio.terminaOsservazioneUniversita();
     }
 }

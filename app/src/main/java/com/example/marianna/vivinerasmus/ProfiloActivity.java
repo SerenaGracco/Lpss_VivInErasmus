@@ -39,7 +39,7 @@ public class ProfiloActivity extends AppCompatActivity {
                 final String userID = mAuth.getCurrentUser().getUid();
                 if (!name.isEmpty()) {
 
-                    mDatabaseUsers.child(userID).child("name").setValue(name//TODO
+                    mDatabaseUsers.child(userID).child("name").setValue(name//TODO vedi sotto
                              /*, new ref.CompletionListener() {
                         @Override
                         public void onComplete(FirebaseError firebaseError, FirebaseDatabase firebase) {
