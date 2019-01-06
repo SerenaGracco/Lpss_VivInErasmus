@@ -57,7 +57,7 @@ public class UniAdapter extends BaseAdapter{
             convertView = LayoutInflater.from(context).inflate(R.layout.universita, parent, false);
 
         // Ottengo gli id correnti
-        TextView textIndirizzo = (TextView)convertView.findViewById(R.id.textIndirizzo);
+        TextView textIndirizzo = (TextView)convertView.findViewById(R.id.textUsername);
         TextView textNome = (TextView)convertView.findViewById(R.id.textNome);
 
 
@@ -66,9 +66,6 @@ public class UniAdapter extends BaseAdapter{
         Universitas universitas = listaUniversita.get(position);
         textNome.setText(universitas.getNome());
         textIndirizzo.setText(universitas.getIndirizzo());
-        // TODO: 10/10/2018 immagine e ranking???
-
-        //su firebase immagine: url comune/nomeimmagine.jpg
 
         return convertView;
     }

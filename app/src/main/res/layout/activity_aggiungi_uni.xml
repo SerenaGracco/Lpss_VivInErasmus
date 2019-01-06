@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <EditText
+            android:id="@+id/editIDuni"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="ID università: una sola parola che è parte del nome"
+            android:inputType="text"
+            android:padding="16dp"
+            android:textColor="#000" />
+
+        <EditText
+            android:id="@+id/editNomeUni"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="Nome Università"
+            android:inputType="text"
+            android:padding="16dp"
+            android:textColor="#000" />
+
+
+        <EditText
+            android:id="@+id/editIndirizzoUni"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="Indirizzo Università"
+            android:inputType="textEmailAddress"
+            android:padding="16dp"
+            android:textColor="#000" />
+
+        <EditText
+            android:id="@+id/editSitoUni"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="Sito Università"
+            android:inputType="text"
+            android:padding="16dp"
+            android:textColor="#000" />
+
+        <EditText
+            android:id="@+id/editEmailUni"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="Email Università"
+            android:inputType="text"
+            android:padding="16dp"
+            android:textColor="#000" />
+
+        <Button
+            android:id="@+id/btnAggiungi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Aggiungi!"
+            android:textColor="#000000" />
+
+
+    </LinearLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>

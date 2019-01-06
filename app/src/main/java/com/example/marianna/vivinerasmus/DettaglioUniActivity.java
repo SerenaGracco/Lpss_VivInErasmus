@@ -3,7 +3,6 @@ package com.example.marianna.vivinerasmus;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.marianna.vivinerasmus.datamodel.Universitas;
@@ -25,17 +24,15 @@ public class DettaglioUniActivity extends AppCompatActivity {
         /*private*/ TextView mIndirizzo;
        /* private*/ TextView mSito;
         /*private*/ TextView mEmail;
-        Button mVai;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dettaglio_uni);
 
         // Imposto gli id widget
-        mNome = findViewById(R.id.textView1);
-        mIndirizzo = /*(TextView)*/findViewById(R.id.textView2);
-        mSito = findViewById(R.id.textView3);
-        mEmail = findViewById(R.id.textView4);
-        mVai =findViewById(R.id.btnVai);
+        mNome = findViewById(R.id.textNomeUni);
+        mIndirizzo = /*(TextView)*/findViewById(R.id.textIndirizzoUni);
+        mSito = findViewById(R.id.textSitoUni);
+        mEmail = findViewById(R.id.textEmailUni);
 
         // Ottengo i dati passati ed eventualmente visualizzo l'uni
         Intent intent = getIntent();
@@ -47,15 +44,7 @@ public class DettaglioUniActivity extends AppCompatActivity {
             mNome.setText(universita.getNome());
             mEmail.setText(universita.getEmail());
 
-           /* mVai.setOnClickListener(new View.OnClickListener() {
-
-                public void onClick(View v) {
-                    //TODO:if logineffettuato, else intent a login
-                     Intent intent2 = new Intent(getBaseContext(), BachecaActivity.class);
-                    //intent2.putExtra(EXTRA_UNIVERSITA, universita);
-                    startActivity(intent2);
-                }
-            });*/
+            //TODO: pulsante per eliminare l'uni (se sono stato io a crearla)
         }
     }
 }

@@ -15,7 +15,7 @@ import java.util.List;
 
 public class DataStore  {
     // Costanti
-    private final static String TAG = "DataStore";
+    //private final static String TAG = "DataStore";
     private final static String DB_UNIVERSITA = "Università";
 
     private ValueEventListener listenerUni;
@@ -82,10 +82,6 @@ public class DataStore  {
     public void aggiungiUni(Universitas universita) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(DB_UNIVERSITA).child(universita.getIDuni());
         ref.setValue(universita);
-        /*ref.child("Nome").setValue(universita.getnome());
-        ref.child(KEY_NOME).setValue(studente.getNome());
-        ref.child(KEY_CREDITI).setValue(studente.getCrediti());
-        */
     }
 
     /**

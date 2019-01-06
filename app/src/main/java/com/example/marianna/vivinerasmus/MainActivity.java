@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //TODO pulsante login invisibile SE LOGGATO
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null)
+        // Controllo del login dello user
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             findViewById(R.id.btnLogin).setVisibility(View.GONE);

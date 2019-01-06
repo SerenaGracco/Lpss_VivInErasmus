@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.marianna.vivinerasmus.datamodel.DataStore;
 import com.example.marianna.vivinerasmus.datamodel.Universitas;
@@ -23,7 +24,6 @@ public class ListaActivity extends AppCompatActivity {
 
     // Costanti
     private final static String EXTRA_UNIVERSITA = "universita";
-    //private final static String TAG = "VivInErasmus";
 
     // Widget
     private ListView mLista;
@@ -45,12 +45,12 @@ public class ListaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
 
-        mOmino=(FloatingActionButton)findViewById(R.id.fabOmino);
-        mLista = (ListView)findViewById(R.id.listaUniversita);
-        mCerca=(SearchView)findViewById(R.id.searchView);
+        mOmino = (FloatingActionButton) findViewById(R.id.fabOmino);
+        mLista = (ListView) findViewById(R.id.listaUniversita);
+        mCerca = (SearchView) findViewById(R.id.searchView);
 
-        mAuth= FirebaseAuth.getInstance();
-        //TODO: searchview
+        mAuth = FirebaseAuth.getInstance();
+
         adapter = new UniAdapter(this);
 
         archivio.iniziaOsservazioneUniversita(new DataStore.UpdateListener() {
@@ -73,7 +73,6 @@ public class ListaActivity extends AppCompatActivity {
         });
 
 
-
         mOmino.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -81,8 +80,8 @@ public class ListaActivity extends AppCompatActivity {
                 if (currentUser == null) {
                     Intent intent = new Intent(getBaseContext(), LoginActivity.class);
                     startActivity(intent);
-                }else{
-                    Intent intent2=new Intent(getBaseContext(), ProfiloActivity.class);
+                } else {
+                    Intent intent2 = new Intent(getBaseContext(), ProfiloActivity.class);
                     startActivity(intent2);
                 }
             }
@@ -91,21 +90,27 @@ public class ListaActivity extends AppCompatActivity {
 
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_lista, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-      /*  if (id == R.id.action_settings) {
-            return true;
-        }*/
-         if (id == R.id.action_add) {
-            startActivity(new Intent(ListaActivity.this, AggiungiUniActivity.class));
-        } else if (id == R.id.logout){
+
+        if (id == R.id.action_add) {
+            FirebaseUser currentUser = mAuth.getCurrentUser();
+            if (currentUser != null) {
+                startActivity(new Intent(ListaActivity.this, AggiungiUniActivity.class));
+            } else {
+                Toast.makeText(ListaActivity.this, "DEVI ESSERE LOGGATO", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(ListaActivity.this, MainActivity.class));
+            }
+        } else if (id == R.id.logout) {
             mAuth.signOut();
             Intent logoutIntent = new Intent(ListaActivity.this, MainActivity.class);
             logoutIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -115,7 +120,7 @@ public class ListaActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy(){
+    protected void onDestroy() {
         super.onDestroy();
         archivio.terminaOsservazioneUniversita();
     }

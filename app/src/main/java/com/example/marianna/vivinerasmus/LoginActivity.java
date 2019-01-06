@@ -75,24 +75,4 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
- /*   public void checkEsistenzaUser(/*@NonNull final Task<AuthResult> task) {
-        final String user_id = mAuth.getCurrentUser().getUid();
-        /*database.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //restituisce true se il child user_id ha dati.
-                //TODO NON ENTRA QUA
-                if (!user_id.isEmpty()) {
-                    //Log.d(TAG, "Task completato: successo = " + task.isSuccessful());
-                    startActivity(new Intent(LoginActivity.this, ListaActivity.class));
-                } else {
-                    Toast.makeText(LoginActivity.this, "User non registrato.", Toast.LENGTH_SHORT).show();
-                }
-            }*/
-
-           /* @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }*/
-    // });
-    //}
 }
