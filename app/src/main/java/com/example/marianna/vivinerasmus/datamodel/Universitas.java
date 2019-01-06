@@ -10,17 +10,22 @@ public class Universitas implements Serializable{
     private String Nome;
     private String Sito;
     private String Email;
+    private String IDuni;
 
     public Universitas(){
 
     }
 
-    public Universitas (String Indirizzo, String Nome, String Sito, String Email){
+    public Universitas (String Indirizzo, String Nome, String Sito, String Email, String id){
         this.Indirizzo = Indirizzo;
         this.Nome = Nome;
         this.Sito = Sito;
         this.Email = Email;
+        this.IDuni=id;
     }
+
+    public String getIDuni(){return IDuni;}
+    public void setIDuni (String id) {this.IDuni = id;}
 
     public String getIndirizzo(){return Indirizzo;}
     public void setIndirizzo (String Indirizzo) {this.Indirizzo = Indirizzo;}

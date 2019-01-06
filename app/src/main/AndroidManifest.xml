@@ -35,7 +35,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ListaActivity"/>
-        <activity android:name=".daeliminare.BachecaActivity" />
         <activity android:name=".DettaglioUniActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegistratiActivity" />

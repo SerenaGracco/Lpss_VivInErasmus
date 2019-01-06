@@ -75,6 +75,39 @@ public class DataStore  {
     public List<Universitas> elencoUni() {
         return leuniversita;
     }
+    /**
+     * Aggiunge una uni
+     * @param universita uni da aggiungere
+     */
+    public void aggiungiUni(Universitas universita) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(DB_UNIVERSITA).child(universita.getIDuni());
+        ref.setValue(universita);
+        /*ref.child("Nome").setValue(universita.getnome());
+        ref.child(KEY_NOME).setValue(studente.getNome());
+        ref.child(KEY_CREDITI).setValue(studente.getCrediti());
+        */
+    }
+
+    /**
+     * Aggiorna i dati del'uni utilizzando uniID come riferimento
+     * @param universita dati da aggiornare
+     */
+    public void aggiornaStudente(Universitas universita) {
+        int posizione = getUniversitaIndex(universita.getIDuni());
+        if (posizione == -1)
+            aggiungiUni(universita);
+        else
+            leuniversita.set(posizione, universita);
+    }
+
+    /**
+     * Elimina una uni
+     */
+    public void eliminaUni(String IDuni) {
+        int posizione = getUniversitaIndex(IDuni);
+        if (posizione != -1)
+            leuniversita.remove(posizione);
+    }
 
 
     public Universitas leggiUniversita(String nome) {
