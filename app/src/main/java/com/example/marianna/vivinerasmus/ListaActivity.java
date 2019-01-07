@@ -47,7 +47,6 @@ public class ListaActivity extends AppCompatActivity {
 
         mOmino = (FloatingActionButton) findViewById(R.id.fabOmino);
         mLista = (ListView) findViewById(R.id.listaUniversita);
-        mCerca = (SearchView) findViewById(R.id.searchView);
 
         mAuth = FirebaseAuth.getInstance();
 

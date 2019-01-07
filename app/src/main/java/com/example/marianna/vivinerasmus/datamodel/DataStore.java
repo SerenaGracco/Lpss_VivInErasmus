@@ -88,7 +88,7 @@ public class DataStore  {
      * Aggiorna i dati del'uni utilizzando uniID come riferimento
      * @param universita dati da aggiornare
      */
-    public void aggiornaStudente(Universitas universita) {
+    public void aggiornaUni(Universitas universita) {
         int posizione = getUniversitaIndex(universita.getIDuni());
         if (posizione == -1)
             aggiungiUni(universita);
