@@ -43,7 +43,7 @@ public class DettaglioUniActivity extends AppCompatActivity {
             mSito.setText(universita.getSito());
             mNome.setText(universita.getNome());
             mEmail.setText(universita.getEmail());
-
+           
             //TODO: pulsante per eliminare l'uni (se sono stato io a crearla)
         }
     }
